@@ -67,7 +67,7 @@ class MarsRover
     when 'W'
       new_x = bound_x(@x - unit)
     end
-    if @world.obstacle?(new_y, new_x)
+    if @world.obstacle?(new_x, new_y)
       raise "Obstacle found at x:#{new_x} y:#{new_y}"
     else
       @x, @y = new_x, new_y
