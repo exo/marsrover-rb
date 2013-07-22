@@ -106,4 +106,11 @@ class TestMarsRover < Test::Unit::TestCase
     assert_equal([0,0,'S'], rover.position)
   end
 
+  # Test world with an obstacle
+  # If a world is created with an obstacle, that obstacle should be visible via world#obstacle?
+  def test_world_obstacle
+    world = World.new(5, 5, [ {:x => 1, :y => 1} ])
+    assert_equal(true, world.obstacle?(1,1))
+  end
+
 end
