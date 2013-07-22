@@ -114,4 +114,10 @@ class TestMarsRover < Test::Unit::TestCase
     assert_equal(false, world.obstacle?(0,0))
   end
 
+  # Test robot encountering an obstacle
+  def test_robot_obstacle
+    world = World.new(5, 5, [{:x => 1, :y => 1}])
+    rover = MarsRover.new(1,0,'N', world)
+    assert_equal("Obstacle found at x:1 y:1", rover.command('F'))
+  end
 end
