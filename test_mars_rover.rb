@@ -89,4 +89,12 @@ class TestMarsRover < Test::Unit::TestCase
     assert_equal([0,0,'E'], rover.position)
   end
 
+  # Test bottom edge wrapping
+  # if the robot goes below y=0, it should be at y=4 in a 5x5 world
+  def test_bottom_wrap
+    rover = MarsRover.new(0,0,'S', world=World.new(5,5))
+    rover.command('F')
+    assert_equal([0,4,'S'], rover.position)
+  end
+
 end
