@@ -7,6 +7,7 @@
 class World
   attr_reader :width, :height
 
+  # Set size and populate object map with obstacles
   def initialize (width=5, height=5, obstacles=[])
     @width = width
     @height = height
@@ -23,6 +24,7 @@ class World
   end
 end
 
+# The Mars Rover itself.
 class MarsRover
 
   # Sets initial position, default [0,0,'N'] and world.
