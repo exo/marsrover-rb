@@ -38,4 +38,11 @@ class TestMarsRover < Test::Unit::TestCase
     assert_equal([0,2,'N'], rover.position)
   end
 
+  # Test forward after turning right.
+  def test_right_forward
+    rover = MarsRover.new
+    rover.command('RF')
+    assert_equal([1,0,'E'], rover.position)
+  end
+
 end
