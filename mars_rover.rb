@@ -33,6 +33,12 @@ class MarsRover
     case @heading
     when 'N'
       @x, @y = @x, (@y + 1)
+    when 'E'
+      @x, @y = (@x + 1), @y
+    when 'S'
+      @x, @y = @x, (@y - 1)
+    when 'W'
+      @x, @y = (@x - 1), @y
     end
   end
 
