@@ -48,9 +48,9 @@ class MarsRover
         when 'B'
           motion(:backward)
         when 'L'
-          left
+          turn(:left)
         when 'R'
-          right
+          turn(:right)
         end
       end
     rescue RuntimeError
@@ -101,18 +101,11 @@ class MarsRover
     end
   end
 
-  # Turn the robot left
-  def left
+  # Turn the robot, changing its heading
+  def turn (direction)
+    unit = (direction == :left) ? -1 : 1
     @heading = @headings.at(
-      (@headings.index(@heading) - 1) % @headings.length
+      (@headings.index(@heading) + unit) % @headings.length
     )
   end
-
-  # Turn the robot right
-  def right
-    @heading = @headings.at(
-      (@headings.index(@heading) + 1) % @headings.length
-    )
-  end
-
 end
