@@ -120,4 +120,13 @@ class TestMarsRover < Test::Unit::TestCase
     rover = MarsRover.new(1,0,'N', world)
     assert_equal("Obstacle found at x:1 y:1", rover.command('F'))
   end
+
+  # Test robot stops at obstacle.
+  def test_robot_stop_obstacle
+    world = World.new(5, 5, [{:x => 2, :y => 1}])
+    rover = MarsRover.new(0,1,'E', world)
+    message = rover.command('FFFF')
+    assert_equal([1,1,'E'], rover.position)
+    assert_equal("Obstacle found at x:2 y:1", message)
+  end
 end
