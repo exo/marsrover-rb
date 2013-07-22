@@ -14,15 +14,17 @@ class MarsRover
 
   # Handles commands passed to the robot
   def command (command_string)
-    case command_string
-    when 'F'
-      forward
-    when 'B'
-      backward
-    when 'L'
-      left
-    when 'R'
-      right
+    command_string.each_char do |c|
+      case c
+      when 'F'
+        forward
+      when 'B'
+        backward
+      when 'L'
+        left
+      when 'R'
+        right
+      end
     end
   end
 
