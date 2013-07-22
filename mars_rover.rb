@@ -35,32 +35,42 @@ class MarsRover
 
   # Handles commands passed to the robot
   def command (command_string)
-    command_string.each_char do |c|
-      case c
-      when 'F'
-        motion(:forward)
-      when 'B'
-        motion(:backward)
-      when 'L'
-        left
-      when 'R'
-        right
+    begin
+      command_string.each_char do |c|
+        case c
+        when 'F'
+          motion(:forward)
+        when 'B'
+          motion(:backward)
+        when 'L'
+          left
+        when 'R'
+          right
+        end
       end
+    rescue RuntimeError
+      return $!.message
     end
   end
 
   # Moves the robot in the specified direction, according to current heading.
   def motion (direction)
     unit = (direction == :forward) ? 1 : -1;
+    new_x, new_y = @x, @y
     case @heading
     when 'N'
-      @y = bound_y(@y + unit)
+      new_y = bound_y(@y + unit)
     when 'E'
-      @x = bound_x(@x + unit)
+      new_x = bound_x(@x + unit)
     when 'S'
-      @y = bound_y(@y - unit)
+      new_y = bound_y(@y - unit)
     when 'W'
-      @x = bound_x(@x - unit)
+      new_x = bound_x(@x - unit)
+    end
+    if @world.obstacle?(new_y, new_x)
+      raise "Obstacle found at x:#{new_x} y:#{new_y}"
+    else
+      @x, @y = new_x, new_y
     end
   end
 
