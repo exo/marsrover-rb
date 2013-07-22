@@ -12,8 +12,9 @@ class World
     end
   end
 
+  # Whether there is an obstacle at the given location (true/false)
   def obstacle? (x, y)
-    return @obstacle_map[x][y]
+    return (@obstacle_map[x][y] != nil)
   end
 end
 
