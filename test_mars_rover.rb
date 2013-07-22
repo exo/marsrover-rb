@@ -136,4 +136,24 @@ class TestMarsRover < Test::Unit::TestCase
     assert_equal([1,1,'E'], rover.position)
     assert_equal("Obstacle found at x:2 y:1", message)
   end
+
+  # Test robot & world with multiple obstacles
+  def test_robot_multi_obstacle
+    # Build a 3 unit high wall at x=1
+    obstacles = [
+      {:x => 1, :y => 0},
+      {:x => 1, :y => 1},
+      {:x => 1, :y => 2}
+    ]
+    world = World.new(5, 5, obstacles)
+    rover = MarsRover.new(0,0,'E', world)
+    message = rover.command('F')
+    assert_equal("Obstacle found at x:1 y:0", message)
+    message = rover.command('LFRF')
+    assert_equal("Obstacle found at x:1 y:1", message)
+    message = rover.command('LFRF')
+    assert_equal("Obstacle found at x:1 y:2", message)
+    message = rover.command('LFRF')
+    assert_equal([1,3,'E'], rover.position)
+  end
 end
