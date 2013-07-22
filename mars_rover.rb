@@ -28,9 +28,9 @@ class MarsRover
     command_string.each_char do |c|
       case c
       when 'F'
-        forward
+        motion(:forward)
       when 'B'
-        backward
+        motion(:backward)
       when 'L'
         left
       when 'R'
@@ -39,31 +39,18 @@ class MarsRover
     end
   end
 
-  # Moves the robot forward
-  def forward
+  # Moves the robot in the specified direction, according to current heading.
+  def motion (direction)
+    unit = (direction == :forward) ? 1 : -1;
     case @heading
     when 'N'
-      @x, @y = @x, (@y + 1)
+      @x, @y = @x, (@y + unit)
     when 'E'
-      @x, @y = (@x + 1), @y
+      @x, @y = (@x + unit), @y
     when 'S'
-      @x, @y = @x, (@y - 1)
+      @x, @y = @x, (@y - unit)
     when 'W'
-      @x, @y = (@x - 1), @y
-    end
-  end
-
-  # Moves the robot backwarde
-  def backward
-    case @heading
-    when 'N'
-      @x, @y = @x, (@y - 1)
-    when 'E'
-      @x, @y = (@x - 1), @y
-    when 'S'
-      @x, @y = @x, (@y + 1)
-    when 'W'
-      @x, @y = (@x + 1), @y
+      @x, @y = (@x - unit), @y
     end
   end
 
