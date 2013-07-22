@@ -121,6 +121,13 @@ class TestMarsRover < Test::Unit::TestCase
     assert_equal("Obstacle found at x:1 y:1", rover.command('F'))
   end
 
+  # Test obstacle where x and y co-ordinates don't match
+  def test_robot_obstacle_diff_coords
+    world = World.new(5, 5, [{:x => 2, :y => 1}])
+    rover = MarsRover.new(1,1,'E', world)
+    assert_equal("Obstacle found at x:2 y:1", rover.command('F'))
+  end
+
   # Test robot stops at obstacle.
   def test_robot_stop_obstacle
     world = World.new(5, 5, [{:x => 2, :y => 1}])
