@@ -73,4 +73,12 @@ class TestMarsRover < Test::Unit::TestCase
     assert_equal(5, world.height)
   end
 
+  # Test left edge wrapping
+  # when the robot goes left at x=0, it should be at x=4 in a 5x5 world.
+  def test_left_wrap
+    rover = MarsRover.new(0,0,'N', world=World.new(5,5))
+    rover.command('LF')
+    assert_equal([4,0,'W'], rover.position)
+  end
+
 end
