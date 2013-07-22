@@ -4,6 +4,7 @@ class MarsRover
   def initialize (x=0, y=0, heading='N')
     @x, @y = x, y
     @heading = heading
+    @headings = ['N', 'E', 'S', 'W']
   end
 
   # Provides the current position
@@ -18,6 +19,8 @@ class MarsRover
       forward
     when 'B'
       backward
+    when 'L'
+      left
     end
   end
 
@@ -37,4 +40,10 @@ class MarsRover
     end
   end
 
+  # Turn the robot left
+  def left
+    @heading = @headings.at(
+      (@headings.index(@heading) - 1) % @headings.length
+    )
+  end
 end
