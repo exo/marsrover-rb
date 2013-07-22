@@ -65,4 +65,12 @@ class TestMarsRover < Test::Unit::TestCase
     rover.command('FFRFF')
     assert_equal([2,2, 'E'], rover.position)
   end
+
+  # Test world class exists and a default world should be 5x5
+  def test_world_size
+    world = World.new
+    assert_equal(5, world.width)
+    assert_equal(5, world.height)
+  end
+
 end
