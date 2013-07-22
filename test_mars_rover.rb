@@ -1,3 +1,8 @@
+# test_mars_rover.rb
+# Tests for Mars Rover Kata
+# Author: Jon Simpson <me@jonsimpson.co.uk>
+# Date: August 22, 2013
+
 require "./mars_rover"
 require "test/unit"
 

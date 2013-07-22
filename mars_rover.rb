@@ -1,3 +1,8 @@
+# mars_rover.rb
+# Solution to Mars Rover Kata
+# Author: Jon Simpson <me@jonsimpson.co.uk>
+# Date: August 22, 2013
+
 # World for the Mars Rover to explore, default 5x5.
 class World
   attr_reader :width, :height
