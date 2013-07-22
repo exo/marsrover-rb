@@ -31,4 +31,11 @@ class TestMarsRover < Test::Unit::TestCase
     assert_equal([0,0,'E'], rover.position)
   end
 
+  # Test multiple commands
+  def test_forward_twice
+    rover = MarsRover.new
+    rover.command('FF')
+    assert_equal([0,2,'N'], rover.position)
+  end
+
 end
