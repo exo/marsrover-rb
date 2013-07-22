@@ -1,3 +1,14 @@
+# World for the Mars Rover to explore, default 5x5.
+class World
+  attr_reader :width, :height
+
+  def initialize (width=5, height=5)
+    @width = width
+    @height = height
+  end
+
+end
+
 class MarsRover
 
   # Sets initial position, default [0,0,'N']
