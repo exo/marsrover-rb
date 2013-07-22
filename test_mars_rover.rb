@@ -59,4 +59,10 @@ class TestMarsRover < Test::Unit::TestCase
     assert_equal([0,0,'N'], rover.position)
   end
 
+  # Kata example test - 'FFRFF' puts the rover at [2,2,'E'].
+  def test_ffrff
+    rover = MarsRover.new
+    rover.command('FFRFF')
+    assert_equal([2,2, 'E'], rover.position)
+  end
 end
