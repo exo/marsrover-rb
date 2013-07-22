@@ -47,7 +47,7 @@ class TestMarsRover < Test::Unit::TestCase
 
   # Test backward after turning left.
   def test_left_backward
-    rover = MarsRover.new(0,0,'N')
+    rover = MarsRover.new
     rover.command('LB')
     assert_equal([1,0,'W'], rover.position)
   end
