@@ -30,7 +30,7 @@ class MarsRover
   def forward
     case @heading
     when 'N'
-      @x, @y = (@x + 1), @y
+      @x, @y = @x, (@y + 1)
     end
   end
 
@@ -38,7 +38,7 @@ class MarsRover
   def backward
     case @heading
     when 'N'
-      @x, @y = (@x - 1), @y
+      @x, @y = @x, (@y - 1)
     end
   end
 
