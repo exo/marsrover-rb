@@ -1,7 +1,7 @@
 class MarsRover
 
-  # Sets initial position
-  def initialize (x, y, heading)
+  # Sets initial position, default [0,0,'N']
+  def initialize (x=0, y=0, heading='N')
     @x, @y = x, y
     @heading = heading
   end
