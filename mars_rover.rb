@@ -11,11 +11,12 @@ end
 
 class MarsRover
 
-  # Sets initial position, default [0,0,'N']
-  def initialize (x=0, y=0, heading='N')
+  # Sets initial position, default [0,0,'N'] and world.
+  def initialize (x=0, y=0, heading='N', world=World.new)
     @x, @y = x, y
     @heading = heading
     @headings = ['N', 'E', 'S', 'W']
+    @world = world
   end
 
   # Provides the current position
@@ -44,13 +45,24 @@ class MarsRover
     unit = (direction == :forward) ? 1 : -1;
     case @heading
     when 'N'
-      @x, @y = @x, (@y + unit)
+      @y = @y + unit
     when 'E'
-      @x, @y = (@x + unit), @y
+      @x = bound_x(@x + unit)
     when 'S'
-      @x, @y = @x, (@y - unit)
+      @y = @y - unit
     when 'W'
-      @x, @y = (@x - unit), @y
+      @x = bound_x(@x - unit)
+    end
+  end
+
+  # Wrap bounds appropriately for x values
+  def bound_x (x)
+    if x == @world.width
+      return 0
+    elsif x == -1
+      return (@world.width - 1)
+    else
+      return x
     end
   end
 
