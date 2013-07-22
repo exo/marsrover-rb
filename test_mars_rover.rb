@@ -52,4 +52,11 @@ class TestMarsRover < Test::Unit::TestCase
     assert_equal([1,0,'W'], rover.position)
   end
 
+  # Test multiple turns for a complete rotation
+  def test_complete_rotation
+    rover = MarsRover.new
+    rover.command('LLLL')
+    assert_equal([0,0,'N'], rover.position)
+  end
+
 end
