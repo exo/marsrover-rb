@@ -2,11 +2,19 @@
 class World
   attr_reader :width, :height
 
-  def initialize (width=5, height=5)
+  def initialize (width=5, height=5, obstacles=[])
     @width = width
     @height = height
+    @obstacle_map = Array.new(width) { Array.new(height) }
+    obstacles.each do |obstacle|
+      x, y = obstacle[:x], obstacle[:y]
+      @obstacle_map[x][y] = true
+    end
   end
 
+  def obstacle? (x, y)
+    return @obstacle_map[x][y]
+  end
 end
 
 class MarsRover

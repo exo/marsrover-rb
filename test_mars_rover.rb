@@ -111,6 +111,7 @@ class TestMarsRover < Test::Unit::TestCase
   def test_world_obstacle
     world = World.new(5, 5, [ {:x => 1, :y => 1} ])
     assert_equal(true, world.obstacle?(1,1))
+    assert_equal(false, world.obstacle?(0,0))
   end
 
 end
