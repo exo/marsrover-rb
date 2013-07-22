@@ -21,6 +21,8 @@ class MarsRover
       backward
     when 'L'
       left
+    when 'R'
+      right
     end
   end
 
@@ -46,4 +48,12 @@ class MarsRover
       (@headings.index(@heading) - 1) % @headings.length
     )
   end
+
+  # Turn the robot right
+  def right
+    @heading = @headings.at(
+      (@headings.index(@heading) + 1) % @headings.length
+    )
+  end
+
 end
