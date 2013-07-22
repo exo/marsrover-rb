@@ -45,11 +45,11 @@ class MarsRover
     unit = (direction == :forward) ? 1 : -1;
     case @heading
     when 'N'
-      @y = @y + unit
+      @y = bound_y(@y + unit)
     when 'E'
       @x = bound_x(@x + unit)
     when 'S'
-      @y = @y - unit
+      @y = bound_y(@y - unit)
     when 'W'
       @x = bound_x(@x - unit)
     end
@@ -63,6 +63,17 @@ class MarsRover
       return (@world.width - 1)
     else
       return x
+    end
+  end
+
+  # Wrap bounds appropriately for y values
+  def bound_y (y)
+    if y == @world.height
+      return 0
+    elsif y == -1
+      return (@world.height - 1)
+    else
+      return y
     end
   end
 
