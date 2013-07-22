@@ -17,4 +17,10 @@ class TestMarsRover < Test::Unit::TestCase
     assert_equal([0,0,'N'], rover.position())
   end
 
+  # Test left turn
+  def test_left_turn
+    rover = MarsRover.new
+    rover.command('L')
+    assert_equal([0,0,'E'], rover.position())
+  end
 end
