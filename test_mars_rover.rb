@@ -43,18 +43,18 @@ class TestMarsRover < Test::Unit::TestCase
     assert_equal([0,2,'N'], rover.position)
   end
 
-  # Test forward after turning right.
+  # Test forward after turning east.
   def test_right_forward
     rover = MarsRover.new
-    rover.command('RF')
+    rover.command('RRF')
     assert_equal([1,0,'E'], rover.position)
   end
 
-  # Test backward after turning left.
+  # Test backward after turning to west.
   def test_left_backward
     rover = MarsRover.new
-    rover.command('LB')
-    assert_equal([1,0,'NW'], rover.position)
+    rover.command('LLB')
+    assert_equal([1,0,'W'], rover.position)
   end
 
   # Test multiple turns for a complete rotation
@@ -64,11 +64,11 @@ class TestMarsRover < Test::Unit::TestCase
     assert_equal([0,0,'N'], rover.position)
   end
 
-  # Kata example test - 'FFRFF' puts the rover at [0,0,'NE'].
-  def test_ffrff
+  # Kata example test - 'FFRRFF' puts the rover at [2,2,'E'].
+  def test_ffrrff
     rover = MarsRover.new
-    rover.command('FFRFF')
-    assert_equal([0,0, 'NE'], rover.position)
+    rover.command('FFRRFF')
+    assert_equal([2,2,'E'], rover.position)
   end
 
   # Test world class exists and a default world should be 5x5
@@ -82,7 +82,7 @@ class TestMarsRover < Test::Unit::TestCase
   # when the robot goes west at x=0, it should be at x=4 in a 5x5 world.
   def test_left_wrap
     rover = MarsRover.new(0,0,'W', world=World.new(5,5))
-    rover.command('LLF')
+    rover.command('F')
     assert_equal([4,0,'W'], rover.position)
   end
 

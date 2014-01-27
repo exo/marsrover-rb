@@ -31,7 +31,7 @@ class MarsRover
   def initialize (x=0, y=0, heading='N', world=World.new)
     @x, @y = x, y
     @heading = heading
-    @headings = ['N', 'E', 'S', 'W']
+    @headings = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW']
     @world = world
   end
 
@@ -64,15 +64,17 @@ class MarsRover
   def motion (direction)
     unit = (direction == :forward) ? 1 : -1;
     new_x, new_y = @x, @y
-    case @heading
-    when 'N'
-      new_y = bound_y(@y + unit)
-    when 'E'
-      new_x = bound_x(@x + unit)
-    when 'S'
-      new_y = bound_y(@y - unit)
-    when 'W'
-      new_x = bound_x(@x - unit)
+    @heading.each_char do | char |
+      case char
+      when 'N'
+        new_y = bound_y(@y + unit)
+      when 'E'
+        new_x = bound_x(@x + unit)
+      when 'S'
+        new_y = bound_y(@y - unit)
+      when 'W'
+        new_x = bound_x(@x - unit)
+      end
     end
     if @world.obstacle?(new_x, new_y)
       raise "Obstacle found at x:#{new_x} y:#{new_y}"
