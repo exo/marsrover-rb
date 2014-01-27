@@ -67,13 +67,13 @@ class MarsRover
     @heading.each_char do | char |
       case char
       when 'N'
-        new_y = bound_y(@y + unit)
+        new_y = bound_y(new_y + unit)
       when 'E'
-        new_x = bound_x(@x + unit)
+        new_x = bound_x(new_x + unit)
       when 'S'
-        new_y = bound_y(@y - unit)
+        new_y = bound_y(new_y - unit)
       when 'W'
-        new_x = bound_x(@x - unit)
+        new_x = bound_x(new_x - unit)
       end
     end
     if @world.obstacle?(new_x, new_y)

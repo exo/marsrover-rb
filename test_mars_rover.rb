@@ -56,6 +56,20 @@ class TestMarsRover < Test::Unit::TestCase
     rover.command('LLB')
     assert_equal([1,0,'W'], rover.position)
   end
+  
+  # Test forward in composite direction
+  def test_forward_composite
+    rover = MarsRover.new(0,0,'NE', world = World.new(5, 5))
+    rover.command('F')
+    assert_equal([1,1,'NE'], rover.position)
+  end
+
+  # Test backward in composite direction
+  def test_backward_composite
+    rover = MarsRover.new(1,1,'NE', world = World.new(5, 5))
+    rover.command('B')
+    assert_equal([0,0,'NE'], rover.position)
+  end
 
   # Test multiple turns for a complete rotation
   def test_complete_rotation
