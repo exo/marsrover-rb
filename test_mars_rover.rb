@@ -175,4 +175,16 @@ class TestMarsRover < Test::Unit::TestCase
     message = rover.command('LLFRRF')
     assert_equal([1,3,'E'], rover.position)
   end
+  
+  def test_robot_composite_obstacle
+    # Put an obstacle at a composite position
+    obstacle = [
+      {:x => 3, :y => 3}
+    ]
+    world = World.new(5, 5, obstacle)
+    rover = MarsRover.new(0,0,'NE', world)
+    message = rover.command('FFF')
+    assert_equal("Obstacle found at x:3 y:3", message)
+    assert_equal([2,2,'NE'], rover.position)
+  end
 end
