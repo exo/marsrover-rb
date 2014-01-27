@@ -176,8 +176,8 @@ class TestMarsRover < Test::Unit::TestCase
     assert_equal([1,3,'E'], rover.position)
   end
   
+  # Test robot obstacle detection with composite movement
   def test_robot_composite_obstacle
-    # Put an obstacle at a composite position
     obstacle = [
       {:x => 3, :y => 3}
     ]
@@ -186,5 +186,21 @@ class TestMarsRover < Test::Unit::TestCase
     message = rover.command('FFF')
     assert_equal("Obstacle found at x:3 y:3", message)
     assert_equal([2,2,'NE'], rover.position)
+  end
+
+  # Test that the robot actually moves along composite directions
+  def test_robot_direct_composite_moves
+    # Barricade all locations that aren't the composite move
+    obstacles = [
+      {:x => 0, :y => 1},
+      {:x => 1, :y => 0},
+      {:x => 1, :y => 3},
+      {:x => 2, :y => 2}
+    ]
+    world = World.new(5, 5, obstacles)
+    rover = MarsRover.new(0,0,'NE', world)
+    message = rover.command('F')
+    assert_equal('F', message)
+    assert_equal([1,1,'NE'], rover.position)
   end
 end
