@@ -1,3 +1,5 @@
+# Mars Rover Kata
+
 [![Build Status](https://travis-ci.org/exo/marsrover-rb.svg?branch=master)](https://travis-ci.org/exo/marsrover-rb)
 
 *A new Mars Rover is to be landed by NASA on Mars. You are responsible for developing an API that will allow the Rover to move around the planet. As you won’t get a chance to fix your code once it is on-board, you are expected to use test driven development.*
