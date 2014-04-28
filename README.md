@@ -17,7 +17,7 @@ Here is an example:
 ## Tips!
 
 * Don't worry about the structure of the rover. Let the structure evolve as you add more tests. 
-* Start simple. For instance you might start with a test that if at `0,0,N` with command `F`, the robots position should now be `1,0,N`. 
+* Start simple. For instance you might start with a test that if at `0,0,N` with command `F`, the robots position should now be `0,1,N`. 
 * Don't worry about bounds checking until step 3 (implementing wrapping).
 * Don't start up/use the debugger, use your tests to implement the kata. If you find that you run into issues, use your tests to assert on the inner workings of the rover (as opposed to starting the debugger).
 
