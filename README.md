@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/exo/marsrover-rb.svg?branch=master)](https://travis-ci.org/exo/marsrover-rb)
+
 *A new Mars Rover is to be landed by NASA on Mars. You are responsible for developing an API that will allow the Rover to move around the planet. As you won’t get a chance to fix your code once it is on-board, you are expected to use test driven development.*
 
 To simplify navigation, the planet has been divided up into a grid. The rover's position and location is represented by a combination of `x` and `y` co-ordinates and a letter representing one of the four cardinal compass points. An example position might be `0, 0, N`, which means the rover is in the bottom left corner and facing North. Assume that the square directly North from `(x, y)` is `(x, y+1)`.
